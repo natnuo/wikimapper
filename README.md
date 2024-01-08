@@ -1,4 +1,4 @@
 ﻿# wikimapper
 it's just wikipedia.
 
-code is original.
+code is original by @natnuo, work in progress.
