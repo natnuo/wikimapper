@@ -139,25 +139,26 @@ while run:
   tgt_v_y: float = 0
   if pressed_keys[K_w]:
     tgt_v_y = mvmt_spd
-  if pressed_keys[K_a]:
-    tgt_v_x = mvmt_spd
   if pressed_keys[K_s]:
     tgt_v_y = -mvmt_spd
-  if pressed_keys[K_d]:
-    tgt_v_x = -mvmt_spd
   if pressed_keys[K_LCTRL]:
     tgt_v_x *= 2
     tgt_v_y *= 2
+  if pressed_keys[K_a]:
+    tgt_v_x = mvmt_spd
+  if pressed_keys[K_d]:
+    tgt_v_x = -mvmt_spd
   v_x = (CAMERA_MVMT_MOMENTUM_FACTOR * v_x + (1-CAMERA_MVMT_MOMENTUM_FACTOR) * tgt_v_x) if (abs(v_x) > 0.11 or tgt_v_x != 0) else 0
   v_y = (CAMERA_MVMT_MOMENTUM_FACTOR * v_y + (1-CAMERA_MVMT_MOMENTUM_FACTOR) * tgt_v_y) if (abs(v_y) > 0.11 or tgt_v_y != 0) else 0
-  x_offset += v_x
-  y_offset += v_y
   for event in pygame.event.get():
     if event.type == pygame.MOUSEBUTTONDOWN:
       if event.button == 4: scaling_factor *= 1.1
       if event.button == 5: scaling_factor /= 1.1
     elif event.type == pygame.QUIT:
         run = False
+  x_offset += v_x
+  y_offset += v_y
 
 pygame.quit()
 exit()
+# by @natnuo on github
